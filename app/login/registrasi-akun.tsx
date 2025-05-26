@@ -39,17 +39,11 @@ export default function RegisterPage() {
         <Text style={styles.buttonText}>SMS</Text>
       </TouchableOpacity>
 
-      {/* <View style={styles.footer}>
-        <Text style={styles.footerText}>Sudah punya akun? </Text>
-        <TouchableOpacity onPress={() => router.push('/login')}>
-          <b><u style={styles.footerLink}>Masuk ke akun anda</u></b>
-        </TouchableOpacity>
-      </View> */}
 
          <View style={styles.bottomTextContainer}>
         <Text style={styles.bottomText}>Sudah punya akun?</Text>
         <TouchableOpacity onPress={() => router.push('/login/index' as any)}>
-            <u><Text style={styles.loginLink}>Masuk ke akun anda</Text></u>
+            <Text style={[styles.loginLink, { textDecorationLine: 'underline' }]}>Masuk ke akun anda</Text>
         </TouchableOpacity>
       </View>
 
