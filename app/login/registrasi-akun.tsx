@@ -48,7 +48,7 @@ export default function RegisterPage() {
 
          <View style={styles.bottomTextContainer}>
         <Text style={styles.bottomText}>Sudah punya akun?</Text>
-        <TouchableOpacity onPress={() => router.push('/login/index')}>
+        <TouchableOpacity onPress={() => router.push('/login/index' as any)}>
             <u><Text style={styles.loginLink}>Masuk ke akun anda</Text></u>
         </TouchableOpacity>
       </View>

@@ -9,7 +9,7 @@ export default function ChooseRolePage() {
       <Text style={styles.title}>Pilih Peran</Text>
 
       {/* Petani */}
-      <TouchableOpacity style={styles.card} onPress={() => router.push('/+not-found')}>
+      <TouchableOpacity style={styles.card} onPress={() => router.push('/petani/homepagePetani')}>
         {/* <Image source={require('../../../assets/image/farmer.png')} style={styles.image} /> */}
         <Text style={styles.cardText}>Petani</Text>
       </TouchableOpacity>
