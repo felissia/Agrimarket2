@@ -38,6 +38,13 @@ export default function PetaniLayout() {
           title: "Banking",
         }}
       />
+      <Stack.Screen
+        name="chat"
+        options={{
+          headerShown: false,
+          title: "Chat",
+        }}
+      />
     </Stack>
   )
 }

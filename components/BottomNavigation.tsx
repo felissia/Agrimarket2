@@ -23,7 +23,7 @@ export default function BottomNavigation({ activeTab }: BottomNavigationProps) {
       return "beranda"
     if (pathname.includes("/profile")) return "profil"
     if (pathname.includes("/toko")) return "toko"
-    if (pathname.includes("/chat")) return "percakapan"
+    if (pathname.includes("/chat/index")) return "percakapan"
     return "beranda"
   }
 
@@ -43,7 +43,7 @@ export default function BottomNavigation({ activeTab }: BottomNavigationProps) {
         console.log("Toko navigation - route not implemented yet")
         break
       case "percakapan":
-        console.log("Percakapan navigation - route not implemented yet")
+        console.log("/petani/chat/index")
         break
       case "profil":
         router.push("/petani/profile")
@@ -63,7 +63,7 @@ export default function BottomNavigation({ activeTab }: BottomNavigationProps) {
         <Text style={[styles.bottomNavLabel, { color: currentTab === "toko" ? "#4CAF50" : "#999" }]}>Toko</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.bottomNavItem} onPress={() => navigateToTab("percakapan")}>
+      <TouchableOpacity style={styles.bottomNavItem} onPress={() => router.replace("/petani/chat")}>
         <Ionicons name="chatbubble-outline" size={24} color={currentTab === "percakapan" ? "#4CAF50" : "#999"} />
         <Text style={[styles.bottomNavLabel, { color: currentTab === "percakapan" ? "#4CAF50" : "#999" }]}>
           Percakapan
