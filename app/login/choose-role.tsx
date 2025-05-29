@@ -27,7 +27,7 @@ export default function ChooseRolePage() {
       </TouchableOpacity>
 
       {/* Konsumen */}
-      <TouchableOpacity style={styles.card} onPress={() => router.push('/+not-found')}>
+      <TouchableOpacity style={styles.card} onPress={() => router.push('../konsumen/homePage')}>
         {/* <Image source={require('../../../assets/image/consumer.png')} style={styles.image} /> */}
         <Text style={styles.cardText}>Konsumen</Text>
       </TouchableOpacity>
