@@ -78,6 +78,7 @@ export default function BankingScreen() {
   const handleAddAccount = () => {
     console.log("Add new bank account")
     // Add navigation to add account screen
+    router.push('/petani/profile/settings/banking/addAccount')
   }
 
   return (
@@ -111,6 +112,10 @@ export default function BankingScreen() {
               </View>
             </TouchableOpacity>
           ))}
+
+          <TouchableOpacity onPress={() => router.push("/petani/profile/settings/identity/forumProfile")}>
+  <Text>Go to Forum Profile</Text>
+</TouchableOpacity>
 
           <TouchableOpacity style={styles.addAccountButton} onPress={handleAddAccount}>
             <Ionicons name="add" size={20} color="#4CAF50" />

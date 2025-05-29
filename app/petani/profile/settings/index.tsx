@@ -36,7 +36,7 @@ export default function SettingsScreen() {
 
     switch (menuItem) {
       case "Uang & Rekening":
-        router.push("/petani/profile/banking" as any)
+        router.push("/petani/profile/settings/banking" as any)
         break
       case "Keamanan Akun":
         console.log("Navigate to security settings")
@@ -109,10 +109,14 @@ export default function SettingsScreen() {
 
         {/* Identitas Section */}
         <View style={styles.section}>
-          <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>Identitas</Text>
-            <Ionicons name="chevron-forward" size={20} color="#999" />
-          </View>
+          <TouchableOpacity
+  style={styles.sectionHeader}
+  activeOpacity={0.7}
+onPress={() => router.push("/petani/profile/settings/identity" as never)}
+>
+  <Text style={styles.sectionTitle}>Identitas</Text>
+  <Ionicons name="chevron-forward" size={20} color="#999" />
+</TouchableOpacity>
 
           <View style={styles.menuContainer}>
             <TouchableOpacity style={styles.menuItem} onPress={() => handleMenuPress("Nama Petani")}>
