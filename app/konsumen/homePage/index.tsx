@@ -161,10 +161,9 @@ export default function ConsumerHomePage() {
     // router.push("/konsumen/cart")
   }
 
-  const handleNotificationPress = () => {
-    // router.push("/konsumen/notifications")
-  }
-
+const handleNotificationPress = () => {
+  router.push("/konsumen/homePage/notification" as any);
+};
   const handleCategoryPress = (category: Category) => {
     // router.push(`/konsumen/category/${category.id}`)
   }
