@@ -3,13 +3,13 @@
 import { Ionicons } from "@expo/vector-icons"
 import { useRouter } from "expo-router"
 import { Image, SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from "react-native"
-import BottomNavigation from "../../components/BottomNavigation"
+import BottomNavigation from "../../../components/BottomNavigation"
 
 export default function ProfileScreen() {
   const router = useRouter()
 
   const handleSettingsPress = () => {
-    router.push("/petani/settings")
+    router.push("/petani/profile/settings")
   }
 
   return (

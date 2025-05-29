@@ -36,7 +36,7 @@ export default function SettingsScreen() {
 
     switch (menuItem) {
       case "Uang & Rekening":
-        router.push("/petani/banking")
+        router.push("/petani/profile/banking" as any)
         break
       case "Keamanan Akun":
         console.log("Navigate to security settings")

@@ -23,7 +23,7 @@ export default function NotificationsScreen() {
       orderCode: "ORO001",
       message: "telah sampai ditujuan!",
       timestamp: "12 April 2025, 10:07 PM",
-      image: require("../../assets/images/strawberry-notif.jpg"), 
+      image: require("../../../assets/images/strawberry-notif.jpg"), 
     },
     {
       id: "2",
@@ -31,7 +31,7 @@ export default function NotificationsScreen() {
       orderCode: "ORO002",
       message: "telah sampai ditujuan!",
       timestamp: "13 April 2025, 10:06 PM",
-      image: require("../../assets/images/cucumber-notif.jpeg"), // Local image
+      image: require("../../../assets/images/cucumber-notif.jpeg"), // Local image
     },
     {
       id: "3",
@@ -39,7 +39,7 @@ export default function NotificationsScreen() {
       orderCode: "ORO004",
       message: "telah sampai ditujuan!",
       timestamp: "14 April 2025, 09:08 PM",
-      image: require("../../assets/images/cucumber-notif.jpeg"), // Local image
+      image: require("../../../assets/images/cucumber-notif.jpeg"), // Local image
     },
   ]
 
@@ -49,7 +49,7 @@ export default function NotificationsScreen() {
 
       {/* Header */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backButton} onPress={() => router.push("/petani/homepagePetani")}>
+        <TouchableOpacity style={styles.backButton} onPress={() => router.push("/petani/homePage" as any)}>
           <Ionicons name="arrow-back" size={24} color="#333" />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Notifikasi</Text>

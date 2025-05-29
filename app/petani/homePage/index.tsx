@@ -13,7 +13,7 @@ import {
     TouchableOpacity,
     View,
 } from "react-native"
-import BottomNavigation from "../../components/BottomNavigation"
+import BottomNavigation from "../../../components/BottomNavigation"
 
 export default function PetaniHomepage() {
   const router = useRouter()
@@ -27,7 +27,7 @@ export default function PetaniHomepage() {
   })
 
   const handleNotificationPress = () => {
-    router.push("/petani/notifications")
+    router.push("/petani/homePage/notifications")
   }
 
   return (

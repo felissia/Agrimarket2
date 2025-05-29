@@ -17,11 +17,11 @@ export default function BottomNavigation({ activeTab }: BottomNavigationProps) {
 
     // Auto-detect active tab based on current route
     if (
-      pathname === "/petani/homepagePetani" ||
+      pathname === "/petani/homePage" ||
       (pathname.includes("/petani") && !pathname.includes("/profile") && !pathname.includes("/notifications"))
     )
       return "beranda"
-    if (pathname.includes("/profile")) return "profil"
+    if (pathname.includes("/profile/index")) return "profil"
     if (pathname.includes("/toko")) return "toko"
     if (pathname.includes("/chat/index")) return "percakapan"
     return "beranda"
@@ -31,7 +31,7 @@ export default function BottomNavigation({ activeTab }: BottomNavigationProps) {
 
   const handleBerandaPress = () => {
     console.log("Beranda pressed - navigating to homepage")
-    router.push("/petani/homepagePetani")
+    router.push("/petani/homePage" as any)
   }
 
   const navigateToTab = (tab: string) => {
