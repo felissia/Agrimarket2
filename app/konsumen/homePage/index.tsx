@@ -158,7 +158,7 @@ export default function ConsumerHomePage() {
   }
 
   const handleCartPress = () => {
-    // router.push("/konsumen/cart")
+    router.push("/konsumen/homePage/cart" as any)
   }
 
 const handleNotificationPress = () => {

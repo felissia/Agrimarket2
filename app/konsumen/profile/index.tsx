@@ -12,7 +12,10 @@ export default function ProfileScreen() {
 
       {/* Header with settings icon */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.settingsButton}>
+        <TouchableOpacity
+          style={styles.settingsButton}
+          onPress={() => router.push("/konsumen/profile/settings" as any)}
+        >
           <Ionicons name="settings-outline" size={24} color="#333" />
         </TouchableOpacity>
       </View>

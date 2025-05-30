@@ -43,28 +43,28 @@ export default function BankingScreen() {
   const transactions: Transaction[] = [
     {
       id: "1",
-      type: "Cashout",
+      type: "Check Out",
       date: "1 May 2025",
       time: "10:21 AM",
       amount: 500000,
     },
     {
       id: "2",
-      type: "Cashout",
+      type: "Top Up",
       date: "9 April 2025",
       time: "21:21 PM",
       amount: 370000,
     },
     {
       id: "3",
-      type: "Cashout",
+      type: "Check Out",
       date: "2 April 2025",
       time: "04:04 AM",
       amount: 100000,
     },
     {
       id: "4",
-      type: "Cashout",
+      type: "Top Up",
       date: "11 February 2025",
       time: "10:21 AM",
       amount: 850000,
@@ -78,7 +78,7 @@ export default function BankingScreen() {
   const handleAddAccount = () => {
     console.log("Add new bank account")
     // Add navigation to add account screen
-    router.push('/petani/profile/settings/banking/addAccount')
+    router.push('/konsumen/profile/settings/banking/addAccount')
   }
 
   return (
@@ -87,10 +87,10 @@ export default function BankingScreen() {
 
       {/* Header */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backButton} onPress={() => router.replace("/petani/profile/settings")}>
+        <TouchableOpacity style={styles.backButton} onPress={() => router.replace("/konsumen/profile/settings")}>
           <Ionicons name="arrow-back" size={24} color="#333" />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Uang & Rekening</Text>
+        <Text style={styles.headerTitle}> Rekening Bank</Text>
         <View style={styles.headerSpacer} />
       </View>
 
@@ -113,7 +113,7 @@ export default function BankingScreen() {
             </TouchableOpacity>
           ))}
 
-          <TouchableOpacity onPress={() => router.push("/petani/profile/settings/identity/forumProfile")}>
+          <TouchableOpacity onPress={() => router.push("/konsumen/profile/settings/identity/forumProfile")}>
   <Text>Go to Forum Profile</Text>
 </TouchableOpacity>
 
@@ -138,7 +138,16 @@ export default function BankingScreen() {
                   {transaction.date}, {transaction.time}
                 </Text>
               </View>
-              <Text style={styles.transactionAmount}>{formatCurrency(transaction.amount)}</Text>
+              <Text
+                style={[
+                  styles.transactionAmount,
+                    transaction.type === "Check Out" && { color: "#F44336" } // red for Check Out
+                    ]}
+>
+                {transaction.type === "Check Out"
+                  ? `- ${transaction.amount.toLocaleString("id-ID")}`
+                  : `+ ${transaction.amount.toLocaleString("id-ID")}`}
+              </Text>
             </TouchableOpacity>
           ))}
         </View>
