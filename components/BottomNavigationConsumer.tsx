@@ -24,7 +24,7 @@ export default function BottomNavigationConsumer() {
       name: "Profil",
       icon: "person-outline",
       activeIcon: "person",
-      route: "/konsumen/profil",
+      route: "/konsumen/profile",
     },
   ]
 

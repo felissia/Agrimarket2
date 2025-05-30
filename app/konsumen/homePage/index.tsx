@@ -3,16 +3,16 @@ import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { useEffect, useRef, useState } from "react";
 import {
-    Dimensions,
-    FlatList,
-    Image,
-    SafeAreaView,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  Dimensions,
+  FlatList,
+  Image,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import BottomNavigationConsumer from "../../../components/BottomNavigationConsumer";
 
@@ -22,7 +22,7 @@ interface Product {
   id: string
   name: string
   price: string
-  image: string
+  image: string | number
   rating?: number
   badge?: string
 }
@@ -30,14 +30,14 @@ interface Product {
 interface Category {
   id: string
   name: string
-  image: string
+  image: string | number 
 }
 
 interface CarouselItem {
   id: string
   title: string
   subtitle: string
-  image: string
+  image: string | number 
   backgroundColor: string
 }
 
@@ -52,7 +52,7 @@ export default function ConsumerHomePage() {
       id: "1",
       title: "Diskon 50%",
       subtitle: "untuk Kategori Sayur",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfkio0uUkZNKrXuxz5n0JssnusIFe3vq1gvA&s",
+      image: require('../../../assets/images/drinks/greenDetoxJuice.jpg'),
       backgroundColor: "#4CAF50",
     },
     {
@@ -75,7 +75,7 @@ export default function ConsumerHomePage() {
     {
       id: "1",
       name: "Ikan",
-      image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglDz0pkB15kyZNE4ztJYKuJhHXsGNO4BboIkdZgXDdEQ8UcYwNu4W-9HLm0u3uBBS7IT8CEaASf4iI-C0ILvwwCYjRTyNAFhGwRdkNZXdGtz3lA7pBdPV87bqypJw8SsKABrcZPAVpjBg/s1600/fresh-fishes.jpg",
+      image: require('../../../assets/images/drinks/greenDetoxJuice.jpg'),
     },
     {
       id: "2",
@@ -106,9 +106,9 @@ export default function ConsumerHomePage() {
   const products: Product[] = [
     {
       id: "1",
-      name: "Jus Detox Oyong",
+      name: "Jus Detox Oyong", 
       price: "Rp10,000",
-      image: "https://www.allrecipes.com/thmb/HLzzHgRXlA4yujAHsmFA19ejKko=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/230642-Healthy-Green-Juice-083-4x3-d8c13b4cb3504d44a701f8d3a2f5d24e.jpg",
+      image: require('../../../assets/images/drinks/greenDetoxJuice.jpg'),
       rating: 98,
       badge: "Best Seller",
     },
@@ -116,14 +116,14 @@ export default function ConsumerHomePage() {
       id: "2",
       name: "Selai Strawberry",
       price: "Rp25,000",
-      image: "https://www.mckenziesfoods.com.au/wp-content/uploads/2015/01/Strawberry-Jam.png",
+       image: require('../../../assets/images/foods/Strawberry-Jam.png'), 
       rating: 95,
     },
     {
       id: "3",
       name: "Madu Murni Organik",
       price: "Rp45,000",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMo1LVnCs9VZ8PgTNaM4tNWV30L6po01glIA&s",
+       image: require('../../../assets/images/foods/pureHoney.jpeg'), 
       rating: 99,
       badge: "Organic",
     },
@@ -131,7 +131,7 @@ export default function ConsumerHomePage() {
       id: "4",
       name: "Keripik Singkong Pedas",
       price: "Rp15,000",
-      image: "https://static.vecteezy.com/system/resources/previews/023/416/127/large_2x/indonesian-food-made-of-spicy-cassava-chips-free-photo.jpg",
+      image: require('../../../assets/images/foods/spicyCassavas.jpg'),  
       rating: 92,
     },
   ]
@@ -174,7 +174,14 @@ const handleNotificationPress = () => {
 
   const renderCarouselItem = ({ item }: { item: CarouselItem }) => (
     <View style={styles.carouselItem}>
-      <Image source={{ uri: item.image }} style={styles.carouselBackgroundImage} />
+      <Image
+        source={
+          typeof item.image === "string"
+            ? { uri: item.image }
+            : item.image
+        }
+        style={styles.carouselBackgroundImage}
+      />
       <View style={styles.carouselOverlay}>
         <View style={styles.carouselContent}>
           <View style={styles.carouselText}>
@@ -188,14 +195,28 @@ const handleNotificationPress = () => {
 
   const renderCategory = ({ item }: { item: Category }) => (
     <TouchableOpacity style={styles.categoryItem} onPress={() => handleCategoryPress(item)}>
-      <Image source={{ uri: item.image }} style={styles.categoryImage} />
+      <Image
+        source={
+          typeof item.image === "string"
+            ? { uri: item.image }
+            : item.image
+        }
+        style={styles.categoryImage}
+      />
       <Text style={styles.categoryName}>{item.name}</Text>
     </TouchableOpacity>
   )
 
   const renderProduct = ({ item }: { item: Product }) => (
     <TouchableOpacity style={styles.productCard} onPress={() => handleProductPress(item)}>
-      <Image source={{ uri: item.image }} style={styles.productImage} />
+      <Image
+        source={
+          typeof item.image === "string"
+            ? { uri: item.image }
+            : item.image
+        }
+        style={styles.productImage}
+      />
       <View style={styles.productInfo}>
         <Text style={styles.productName}>{item.name}</Text>
         <Text style={styles.productPrice}>{item.price}</Text>
