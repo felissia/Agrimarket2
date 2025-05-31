@@ -22,8 +22,6 @@ export default function OrderSuccessScreen() {
     <SafeAreaView style={styles.container}>
       <StatusBar style="dark" />
 
-  
-
       {/* Header */}
       <View style={styles.header}>
         <TouchableOpacity onPress={navigateToHomePage} style={styles.backButton}>

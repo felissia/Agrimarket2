@@ -1,6 +1,6 @@
-import React, { useState, useCallback } from "react";
-import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView, Modal } from "react-native";
 import NavbarFAQ from "@/components/navbarFAQ";
+import React, { useCallback, useState } from "react";
+import { Image, Modal, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 const Faq = () => {
   const [isFrameOpen, setFrameOpen] = useState(false);
@@ -12,7 +12,7 @@ const Faq = () => {
     <View style={styles.container}>
       {/* Search Bar */}
       <View style={styles.searchBar}>
-        <Image source={require("./assets/snack-icon.png")} style={styles.vectorIcon2} />
+        <Image source={require("../../../assets/images/people/profile.jpeg")} style={styles.vectorIcon2} />
         <Text style={styles.cariPertanyaan}>Cari pertanyaan yang anda inginkan</Text>
       </View>
 
@@ -21,7 +21,7 @@ const Faq = () => {
         <View style={styles.back}>
           <View style={styles.rectangleParent}>
             <View style={styles.groupChild} />
-            <Image source={require("./assets/snack-icon.png")} style={styles.vectorIcon} />
+            <Image source={require("../../../assets/images/people/profile.jpeg")} style={styles.vectorIcon} />
           </View>
         </View>
         <Text style={styles.ktp}>Pertanyaan Umum</Text>
@@ -31,7 +31,7 @@ const Faq = () => {
 
       {/* Kategori icon */}
         <TouchableOpacity onPress={openFrame}>
-          <Image source={require("./assets/snack-icon.png")} style={styles.kategoriIcon} />
+          <Image source={require("../../../assets/images/people/profile.jpeg")} style={styles.kategoriIcon} />
         </TouchableOpacity>
 
       {/* Modal Frame */}

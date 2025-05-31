@@ -1,6 +1,6 @@
-import React, { useCallback } from 'react';
-import { View, Text, TouchableOpacity, Image, StyleSheet, ScrollView } from 'react-native';
 import BackButton from '@/components/backButtonTopNav';
+import React, { useCallback } from 'react';
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const Sewa: React.FC = () => {
   const onUploadPress = useCallback(() => {
@@ -23,7 +23,7 @@ const Sewa: React.FC = () => {
         <Text style={styles.label}>Kartu Tanda Penduduk (KTP)</Text>
         <View style={styles.uploadBox}>
           <View style={styles.uploadContent}>
-            <Image source={require('./Vector.png')} style={styles.icon} />
+            <Image source={require("../../../assets/images/people/profile.jpeg")} style={styles.icon} /> 
             <Text>Mengunggah</Text>
           </View>
         </View>
@@ -33,7 +33,7 @@ const Sewa: React.FC = () => {
         <Text style={styles.label}>Surat Perjanjian Sewa Lahan</Text>
         <View style={styles.uploadBox}>
           <View style={styles.uploadContent}>
-            <Image source={require('./Vector.png')} style={styles.icon} />
+            <Image source={require("../../../assets/images/people/profile.jpeg")} style={styles.icon} />
             <Text>Mengunggah</Text>
           </View>
         </View>
@@ -43,7 +43,7 @@ const Sewa: React.FC = () => {
         <Text style={styles.label}>Surat Izin Usaha Perdagangan (SIUP)</Text>
         <View style={styles.uploadBox}>
           <View style={styles.uploadContent}>
-            <Image source={require('./Vector.png')} style={styles.icon} />
+            <Image source={require("../../../assets/images/people/profile.jpeg")} style={styles.icon} />
             <Text>Mengunggah</Text>
           </View>
         </View>
@@ -54,13 +54,13 @@ const Sewa: React.FC = () => {
       </TouchableOpacity>
 
       <TouchableOpacity onPress={onUploadPress}>
-        <Image source={require('./Vector.png')} style={styles.floatingIcon} />
+        <Image source={require("../../../assets/images/people/profile.jpeg")} style={styles.floatingIcon} />
       </TouchableOpacity>
 
       <View style={styles.backButton}>
         <View style={styles.backButtonInner}>
           <View style={styles.backBox} />
-          <Image source={require('./Vector.png')} style={styles.backIcon} />
+          <Image source={require("../../../assets/images/people/profile.jpeg")} style={styles.backIcon} />
         </View>
       </View>
     </ScrollView>
