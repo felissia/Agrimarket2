@@ -24,25 +24,6 @@ export default function CheckoutScreen() {
     <SafeAreaView style={styles.container}>
       <StatusBar style="dark" />
 
-      {/* Status Bar */}
-      <View style={styles.statusBar}>
-        <Text style={styles.timeText}>9:22</Text>
-        <View style={styles.statusIcons}>
-          <View style={styles.notch}></View>
-        </View>
-        <View style={styles.rightIcons}>
-          <View style={styles.signalBars}>
-            <View style={[styles.bar, styles.bar1]}></View>
-            <View style={[styles.bar, styles.bar2]}></View>
-            <View style={[styles.bar, styles.bar3]}></View>
-            <View style={[styles.bar, styles.bar4]}></View>
-          </View>
-          <View style={styles.battery}>
-            <View style={styles.batteryLevel}></View>
-          </View>
-        </View>
-      </View>
-
       {/* Header */}
       <View style={styles.header}>
         <TouchableOpacity onPress={() => router.replace("/konsumen/homePage/cart")} style={styles.backButton}>

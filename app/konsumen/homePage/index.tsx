@@ -137,21 +137,30 @@ export default function ConsumerHomePage() {
   ]
 
   // Auto-slide carousel
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (carouselData.length <= 1) return
+useEffect(() => {
+  if (carouselData.length <= 1) return;
 
-      const nextIndex = (currentCarouselIndex + 1) % carouselData.length
-      carouselRef.current?.scrollToIndex({
-        index: nextIndex,
-        animated: true,
-        viewPosition: 0,
-      })
-      setCurrentCarouselIndex(nextIndex)
-    }, 3000) // Change slide every 3 seconds
+  const interval = setInterval(() => {
+    setCurrentCarouselIndex(prevIndex => {
+      const nextIndex = (prevIndex + 1) % carouselData.length;
+      if (
+        carouselRef.current &&
+        !isNaN(nextIndex) &&
+        nextIndex >= 0 &&
+        nextIndex < carouselData.length
+      ) {
+        carouselRef.current.scrollToIndex({
+          index: nextIndex,
+          animated: true,
+          viewPosition: 0,
+        });
+      }
+      return nextIndex;
+    });
+  }, 3000);
 
-    return () => clearInterval(interval)
-  }, [currentCarouselIndex, carouselData.length])
+  return () => clearInterval(interval);
+}, [carouselData.length]);
 
   const handleSearch = () => {
     console.log("Search:", searchText)
@@ -165,8 +174,21 @@ const handleNotificationPress = () => {
   router.push("/konsumen/homePage/notification" as any);
 };
   const handleCategoryPress = (category: Category) => {
-    // router.push(`/konsumen/category/${category.id}`)
+  // Map category names to route slugs
+  const categoryMap: Record<string, string> = {
+    "ikan": "fish",
+    "buah": "fruit",
+    "sayuran": "vegetable",
+    "daging": "meat",
+    "kacang": "nuts",
+    "jus": "juice",
+  };
+
+  const slug = categoryMap[category.name.toLowerCase()];
+  if (slug) {
+    router.push(`/konsumen/homePage/category/${slug}` as any);
   }
+};
 
   const handleProductPress = (product: Product) => {
     // router.push(`/konsumen/product/${product.id}`)
