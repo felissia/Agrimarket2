@@ -113,9 +113,7 @@ export default function BankingScreen() {
             </TouchableOpacity>
           ))}
 
-          <TouchableOpacity onPress={() => router.push("/konsumen/profile/settings/identity/forumProfile")}>
-  <Text>Go to Forum Profile</Text>
-</TouchableOpacity>
+          
 
           <TouchableOpacity style={styles.addAccountButton} onPress={handleAddAccount}>
             <Ionicons name="add" size={20} color="#4CAF50" />
