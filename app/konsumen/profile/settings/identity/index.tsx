@@ -4,22 +4,22 @@ import { Ionicons } from "@expo/vector-icons"
 import { useRouter } from "expo-router"
 import { useState } from "react"
 import {
-    Alert,
-    Image,
-    SafeAreaView,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  Alert,
+  Image,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native"
 
 export default function IdentityScreen() {
   const router = useRouter()
   const [formData, setFormData] = useState({
-    nama: "Pak Iman",
-    deskripsi: "Petani yang berkomitmen untuk menyediakan produk berkualitas tinggi dengan pelayanan terpercaya..",
+    nama: "Pak Teo",
+    deskripsi: "Tertarik pada buah lokal segar manis, yang dapat diolah lebih lanjut menjadi jus...",
     nomorTelepon: "081298092227",
   })
   const [isVerified] = useState(true)
@@ -32,8 +32,8 @@ export default function IdentityScreen() {
   }
 
   const handleSaveChanges = () => {
-    // Navigate to forum profile page
-    router.push("/petani/profile/settings/identity/forumProfile")
+    // Navigate to profile page
+    router.push("/konsumen/profile")
   }
 
   const handleProfileImagePress = () => {

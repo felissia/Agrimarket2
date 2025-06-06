@@ -5,16 +5,16 @@ import { Ionicons } from "@expo/vector-icons"
 import { useLocalSearchParams, useRouter } from "expo-router"
 import { useRef, useState } from "react"
 import {
-  FlatList,
-  Image,
-  KeyboardAvoidingView,
-  Platform,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
+    FlatList,
+    Image,
+    KeyboardAvoidingView,
+    Platform,
+    SafeAreaView,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
 } from "react-native"
 
 interface Message {
@@ -41,11 +41,11 @@ export default function ChatDetail() {
   // Mock contact data based on ID
   const getContactInfo = (contactId: string) => {
     const contacts: { [key: string]: { name: string; type: string } } = {
-      "1": { name: "Ananda Anang", type: "individual" },
-      "2": { name: "Rando Emil", type: "individual" },
-      "3": { name: "Kick Andy", type: "individual" },
-      "4": { name: "Emery Susanto", type: "individual" },
-      "5": { name: "PT. Mitra Bakti", type: "company" },
+      "1": { name: "Distributor Bandung", type: "individual" },
+      "2": { name: "Ulung Distribution", type: "individual" },
+      "3": { name: "Distribusi Handal", type: "individual" },
+      "4": { name: "Distribusi A", type: "individual" },
+      "5": { name: "Distribusi B", type: "company" },
     }
     return contacts[contactId] || { name: "PT. Mitra Bakti", type: "company" }
   }
@@ -77,7 +77,7 @@ export default function ChatDetail() {
         },
       ]
     } else {
-      // Individual chat (like Emery Susanto)
+      // Individual chat 
       return [
         {
           id: "1",
@@ -93,14 +93,14 @@ export default function ChatDetail() {
         {
           id: "2",
           type: "text" as const,
-          content: "Saya mau tanya tentang kualitas dari produk strawberry ini. Ini jenis pete apa ya?",
+          content: "Saya mau tanya tentang kualitas dari produk strawberry ini. Ini jenis pupuknya apa ya?",
           sender: "contact",
           timestamp: new Date(Date.now() - 1000 * 60 * 25),
         },
         {
           id: "3",
           type: "text" as const,
-          content: "Jenis Pete Raja, pak.",
+          content: "Pupuk Lestari Organik Raja, pak.",
           sender: "user",
           timestamp: new Date(Date.now() - 1000 * 60 * 20),
         },
@@ -246,7 +246,7 @@ export default function ChatDetail() {
       <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === "ios" ? "padding" : "height"}>
         {/* Header */}
         <View style={styles.header}>
-          <TouchableOpacity style={styles.backButtonContainer} onPress={() => router.replace("/petani/chat")}>
+          <TouchableOpacity style={styles.backButtonContainer} onPress={() => router.replace("/konsumen/chat")}>
             <Ionicons name="arrow-back" size={24} />
           </TouchableOpacity>
           <Text style={styles.contactName}>{contactInfo.name}</Text>

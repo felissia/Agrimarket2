@@ -75,7 +75,7 @@ export default function ConsumerHomePage() {
     {
       id: "1",
       name: "Ikan",
-      image: require('../../../assets/images/drinks/greenDetoxJuice.jpg'),
+      image: require('../../../assets/images/foods/fishes.jpeg'),
     },
     {
       id: "2",

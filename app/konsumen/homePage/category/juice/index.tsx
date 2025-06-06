@@ -74,7 +74,7 @@ export default function VegetablesCategoryScreen() {
       <ScrollView style={styles.scrollContainer} showsVerticalScrollIndicator={false}>
         {/* Category Info */}
         <View style={styles.categoryInfo}>
-          <Text style={styles.categoryTitle}>Sayur</Text>
+          <Text style={styles.categoryTitle}>Jus</Text>
           <Text style={styles.categoryDescription}>
             Temukan berbagai jenis sayur segar langsung dari petani lokal! Kami menghadirkan sayuran berkualitas tinggi,
             dipetik setiap hari dan dikemas dengan standar higienis. Cocok untuk pengolahan lebih lanjut!
@@ -85,28 +85,35 @@ export default function VegetablesCategoryScreen() {
         <View style={styles.productsSection}>
           <Text style={styles.productsTitle}>Produk</Text>
 
-          {vegetableProducts.map((product) => (
-            <TouchableOpacity key={product.id} style={styles.productCard}>
-              <Image source={{ uri: product.image }} style={styles.productImage} contentFit="cover" />
-
-              <View style={styles.productInfo}>
-                <Text style={styles.productName}>{product.name}</Text>
-                <Text style={styles.productPrice}>{formatCurrency(product.price)}</Text>
-
-                <View style={styles.badgeContainer}>
-                  <View style={styles.ratingBadge}>
-                    <Ionicons name="thumbs-up" size={12} color="white" />
-                    <Text style={styles.ratingText}>{product.rating}%</Text>
-                  </View>
-                  {product.bestSeller && (
-                    <View style={styles.bestSellerBadge}>
-                      <Text style={styles.bestSellerText}>Best Seller</Text>
-                    </View>
-                  )}
-                </View>
-              </View>
-            </TouchableOpacity>
-          ))}
+         {vegetableProducts.map((product) => (
+  <TouchableOpacity
+    key={product.id}
+    style={styles.productCard}
+    onPress={() => {
+       {
+        router.push("/konsumen/homePage/category/productDetails" as any);
+      }
+      // You can add more conditions for other products if needed
+    }}
+  >
+    <Image source={{ uri: product.image }} style={styles.productImage} contentFit="cover" />
+    <View style={styles.productInfo}>
+      <Text style={styles.productName}>{product.name}</Text>
+      <Text style={styles.productPrice}>{formatCurrency(product.price)}</Text>
+      <View style={styles.badgeContainer}>
+        <View style={styles.ratingBadge}>
+          <Ionicons name="thumbs-up" size={12} color="white" />
+          <Text style={styles.ratingText}>{product.rating}%</Text>
+        </View>
+        {product.bestSeller && (
+          <View style={styles.bestSellerBadge}>
+            <Text style={styles.bestSellerText}>Best Seller</Text>
+          </View>
+        )}
+      </View>
+    </View>
+  </TouchableOpacity>
+))}
         </View>
 
         {/* Bottom Spacing */}
