@@ -22,7 +22,7 @@ interface Product {
   id: string
   name: string
   price: string
-  image: string | number
+  image: string | number 
   rating?: number
   badge?: string
 }
@@ -30,14 +30,14 @@ interface Product {
 interface Category {
   id: string
   name: string
-  image: string | number 
+  image: string | number
 }
 
 interface CarouselItem {
   id: string
   title: string
   subtitle: string
-  image: string | number 
+  image: string | number
   backgroundColor: string
 }
 
@@ -200,7 +200,9 @@ const handleNotificationPress = () => {
         source={
           typeof item.image === "string"
             ? { uri: item.image }
-            : item.image
+            : typeof item.image === "number"
+              ? item.image
+              : require('../../../assets/images/foods/fishes.jpeg')
         }
         style={styles.carouselBackgroundImage}
       />
@@ -221,7 +223,9 @@ const handleNotificationPress = () => {
         source={
           typeof item.image === "string"
             ? { uri: item.image }
-            : item.image
+            : typeof item.image === "number"
+              ? item.image
+              : require('../../../assets/images/foods/fishes.jpeg')
         }
         style={styles.categoryImage}
       />
@@ -235,7 +239,9 @@ const handleNotificationPress = () => {
         source={
           typeof item.image === "string"
             ? { uri: item.image }
-            : item.image
+            : typeof item.image === "number"
+              ? item.image
+              : require('../../../assets/images/foods/fishes.jpeg')
         }
         style={styles.productImage}
       />
