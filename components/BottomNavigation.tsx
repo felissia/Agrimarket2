@@ -18,12 +18,12 @@ export default function BottomNavigation({ activeTab }: BottomNavigationProps) {
     // Auto-detect active tab based on current route
     if (
       pathname === "/petani/homePage" ||
-      (pathname.includes("/petani") && !pathname.includes("/profile") && !pathname.includes("/notifications"))
+      (pathname.includes("/petani") && !pathname.includes("petani/profile") && !pathname.includes("/notifications"))
     )
       return "beranda"
-    if (pathname.includes("/profile/index")) return "profil"
-    if (pathname.includes("/toko")) return "toko"
-    if (pathname.includes("/chat/index")) return "percakapan"
+    if (pathname.includes("petani/profile")) return "profile"
+    if (pathname.includes("petani/toko")) return "toko"
+    if (pathname.includes("petani/chat")) return "percakapan"
     return "beranda"
   }
 
@@ -43,9 +43,9 @@ export default function BottomNavigation({ activeTab }: BottomNavigationProps) {
         console.log("Toko navigation - route not implemented yet")
         break
       case "percakapan":
-        console.log("/petani/chat/index")
+        router.push("/petani/chat")
         break
-      case "profil":
+      case "profile":
         router.push("/petani/profile")
         break
     }
@@ -63,16 +63,16 @@ export default function BottomNavigation({ activeTab }: BottomNavigationProps) {
         <Text style={[styles.bottomNavLabel, { color: currentTab === "toko" ? "#4CAF50" : "#999" }]}>Toko</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.bottomNavItem} onPress={() => router.replace("/petani/chat")}>
+      <TouchableOpacity style={styles.bottomNavItem} onPress={() => navigateToTab("percakapan")}>
         <Ionicons name="chatbubble-outline" size={24} color={currentTab === "percakapan" ? "#4CAF50" : "#999"} />
         <Text style={[styles.bottomNavLabel, { color: currentTab === "percakapan" ? "#4CAF50" : "#999" }]}>
           Percakapan
         </Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.bottomNavItem} onPress={() => navigateToTab("profil")}>
-        <Ionicons name="person-outline" size={24} color={currentTab === "profil" ? "#4CAF50" : "#999"} />
-        <Text style={[styles.bottomNavLabel, { color: currentTab === "profil" ? "#4CAF50" : "#999" }]}>Profil</Text>
+      <TouchableOpacity style={styles.bottomNavItem} onPress={() => navigateToTab("profile")}>
+        <Ionicons name="person-outline" size={24} color={currentTab === "profile" ? "#4CAF50" : "#999"} />
+        <Text style={[styles.bottomNavLabel, { color: currentTab === "profile" ? "#4CAF50" : "#999" }]}>Profile</Text>
       </TouchableOpacity>
     </View>
   )

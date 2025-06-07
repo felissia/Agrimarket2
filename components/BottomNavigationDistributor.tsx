@@ -17,13 +17,13 @@ export default function BottomNavigation({ activeTab }: BottomNavigationProps) {
 
     // Auto-detect active tab based on current route
     if (
-      pathname === "/pengelolah/homePage" ||
-      (pathname.includes("/pengelolah") && !pathname.includes("/profile") && !pathname.includes("/notifications"))
+      pathname === "/distributor/homePage" ||
+      (pathname.includes("/distributor") && !pathname.includes("/profile") && !pathname.includes("/notifications"))
     )
       return "beranda"
-    if (pathname.includes("pengelolah/profile")) return "profile"
-    if (pathname.includes("pengelolah/toko")) return "toko"
-    if (pathname.includes("pengelolah/chat")) return "percakapan"
+    if (pathname.includes("distributor/profile")) return "profile"
+    if (pathname.includes("distributor/toko")) return "toko"
+    if (pathname.includes("distributor/chat")) return "percakapan"
     return "beranda"
   }
 
@@ -31,7 +31,7 @@ export default function BottomNavigation({ activeTab }: BottomNavigationProps) {
 
   const handleBerandaPress = () => {
     console.log("Beranda pressed - navigating to homepage")
-    router.push("/pengelolah/homePage" as any)
+    router.push("/distributor/homePage" as any)
   }
 
   const navigateToTab = (tab: string) => {
@@ -43,10 +43,10 @@ export default function BottomNavigation({ activeTab }: BottomNavigationProps) {
         console.log("Toko navigation - route not implemented yet")
         break
       case "percakapan":
-        router.push("/pengelolah/chat")
+        router.push("/distributor/chat" as any)
         break
       case "profile":
-        router.push("/pengelolah/profile")
+        router.push("/distributor/profile" as any)
         break
     }
   }
