@@ -56,13 +56,6 @@ const Sewa: React.FC = () => {
       <TouchableOpacity onPress={onUploadPress}>
         <Image source={require("../../../assets/images/people/profile.jpeg")} style={styles.floatingIcon} />
       </TouchableOpacity>
-
-      <View style={styles.backButton}>
-        <View style={styles.backButtonInner}>
-          <View style={styles.backBox} />
-          <Image source={require("../../../assets/images/people/profile.jpeg")} style={styles.backIcon} />
-        </View>
-      </View>
     </ScrollView>
   );
 };
@@ -71,7 +64,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
     padding: 20,
-    paddingTop: 40,
+    paddingTop: 0,
   },
   header: {
     fontSize: 35,
