@@ -3,27 +3,26 @@ import { useRouter } from "expo-router";
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View, Alert } from "react-native";
 
-// 🟡 Firebase imports
-// import { doc, setDoc } from "firebase/firestore";
-// import { db } from "@/firebase"; // Adjust this path if needed
+// ✅ Path benar ke firebase config
+import { db } from "@/lib/firebase";
+import { doc, setDoc } from "firebase/firestore";
 
 const Opsi = () => {
   const router = useRouter();
 
   const handleOpsiPress = async (option: string) => {
-    // 🔵 Replace with actual user ID (from Firebase Auth or context)
-    const userId = "user123"; 
+    const userId = "user123"; // 🔄 Ganti ini nanti dengan ID dari Firebase Auth
 
-  //   try {
-  //     // 🔴 Save the option to Firestore
-  //     await setDoc(doc(db, "userAnswers", userId), {
-  //       kepemilikanLahan: option,
-  //       timestamp: new Date()
-  //     }, { merge: true });
+    try {
+      // 🔴 Simpan ke Firestore
+      await setDoc(doc(db, "userAnswers", userId), {
+        kepemilikanLahan: option,
+        timestamp: new Date()
+      }, { merge: true });
 
-  //     console.log("User option saved to Firebase:", option);
+      console.log("User option saved to Firebase:", option);
 
-      // 🔵 Navigate after saving
+      // 🔵 Navigasi
       switch (option) {
         case "Sewa":
           router.push("/petani/kepemilikanLahan/opsiSewa");
@@ -32,10 +31,10 @@ const Opsi = () => {
           router.push("/petani/kepemilikanLahan/opsiPemilik");
           break;
       }
-  //   } catch (error) {
-  //     console.error("Failed to save to Firebase:", error);
-  //     Alert.alert("Error", "Gagal menyimpan pilihan ke database.");
-  //   }
+    } catch (error) {
+      console.error("Failed to save to Firebase:", error);
+      Alert.alert("Error", "Gagal menyimpan pilihan ke database.");
+    }
   };
 
   return (
