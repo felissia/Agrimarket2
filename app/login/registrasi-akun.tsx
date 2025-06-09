@@ -1,22 +1,27 @@
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+// import { auth } from '/workspaces/Agrimarket2/lib/firebase';
+import auth from '@react-native-firebase/auth';
+
 export default function RegisterPage() {
   const router = useRouter();
   const [phone, setPhone] = useState('');
 
-  // const singUptestFn  = () =>
-  // {
-  //   auth().createUser("Email", "Password").then(() =>
-  //   {
-  //     Alert.alert("User Created")
-  //   }
-  // )
-  //  .catch((err) =>{
-  //         console.log(err)
-
-  //  })
-  // }
+  // To confirm to the backend
+   const sendOTP = async () => {
+  try {
+    const confirmation = await auth().signInWithPhoneNumber(`+62${phone}`);
+    // Save confirmation for later verification
+    router.push({
+      pathname: '/login/verif',
+      params: { confirmationString: JSON.stringify(confirmation) }
+    });
+  } catch (error) {
+    console.log('Error sending OTP:', error);
+    Alert.alert('Error', 'Gagal mengirim kode OTP');
+  }
+};
 
   return (
     <View style={styles.container}>

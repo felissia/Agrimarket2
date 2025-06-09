@@ -1,10 +1,26 @@
-import { useRouter } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useState } from 'react';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+
+
+// const confirmation = JSON.parse(confirmationString);
 
 export default function OTPVerificationPage() {
   const router = useRouter();
+  const { confirmationString } = useLocalSearchParams();
   const [phone, setPhone] = useState('');
+
+  // Safely parse confirmationString (handle string | string[])
+  const confirmation = React.useMemo(() => {
+    try {
+      return JSON.parse(
+        Array.isArray(confirmationString) ? confirmationString[0] : confirmationString || '{}'
+      );
+    } catch {
+      return null;
+    }
+  }, [confirmationString]);
+  
   const [otp, setOtp] = useState(['', '', '', '']);
 
   const handleChange = (text: string, index: number) => {
@@ -12,6 +28,21 @@ export default function OTPVerificationPage() {
     newOtp[index] = text;
     setOtp(newOtp);
   };
+
+  // To confirm in the backend
+  const confirmCode = async () => {
+  const code = otp.join('');
+  try {
+    await confirmation.confirm(code);
+    // Success! Navigate to Choose Role
+    router.push('/login/choose-role');
+  } catch (error) {
+    console.log('Invalid code.');
+    Alert.alert('Error', 'Kode OTP salah');
+  }
+};
+  
+   
 
   return (
     <View style={styles.container}>

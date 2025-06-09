@@ -1,5 +1,6 @@
 // lib/firebase.ts
 import { initializeApp } from "firebase/app";
+import { getAuth } from 'firebase/auth';
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -16,3 +17,8 @@ const app = initializeApp(firebaseConfig);
 
 // Ekspor Firestore
 export const db = getFirestore(app);
+
+// Ekspor Authentication
+export const auth = getAuth(app);
+
+
