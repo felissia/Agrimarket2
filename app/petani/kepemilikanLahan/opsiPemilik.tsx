@@ -248,7 +248,7 @@ const styles = StyleSheet.create({
   },
   backWrapper: {
     position: 'absolute',
-    top: 40,
+    top: 20,
     left: 20,
     zIndex: 10,
     backgroundColor: '#fff',
@@ -258,9 +258,10 @@ const styles = StyleSheet.create({
     borderColor: '#84b067',
   },
   title: {
-    fontSize: 24,
+    fontSize: 34,
     fontWeight: 'bold',
-    marginBottom: 30,
+    marginBottom: 20,
+    marginTop: 20,
   },
   inputContainer: {
     marginBottom: 20,
