@@ -9,7 +9,11 @@ const Sewa: React.FC = () => {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      
+      <View style={styles.backWrapper}>
         <BackButton />
+      </View>
+
       <Text style={styles.header}>Dokumen yang Dibutuhkan</Text>
 
       <View style={styles.inputGroup}>
@@ -61,10 +65,16 @@ const Sewa: React.FC = () => {
 };
 
 const styles = StyleSheet.create({
+  backWrapper: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    zIndex: 10,
+  },  
   container: {
     backgroundColor: '#fff',
     padding: 20,
-    paddingTop: 0,
+    paddingTop: 110,
   },
   header: {
     fontSize: 35,
@@ -127,31 +137,6 @@ const styles = StyleSheet.create({
     height: 25,
     alignSelf: 'center',
     marginVertical: 20,
-  },
-  backButton: {
-    position: 'absolute',
-    top: 20,
-    left: 20,
-  },
-  backButtonInner: {
-    width: 40,
-    height: 40,
-    position: 'relative',
-  },
-  backBox: {
-    width: 40,
-    height: 40,
-    borderRadius: 10,
-    backgroundColor: '#fff',
-    borderWidth: 1,
-    borderColor: '#91c077',
-  },
-  backIcon: {
-    position: 'absolute',
-    top: '30%',
-    left: '30%',
-    width: 16,
-    height: 16,
   },
 });
 
