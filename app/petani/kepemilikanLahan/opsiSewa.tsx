@@ -27,7 +27,7 @@ const Sewa: React.FC = () => {
         <Text style={styles.label}>Kartu Tanda Penduduk (KTP)</Text>
         <View style={styles.uploadBox}>
           <View style={styles.uploadContent}>
-            <Image source={require("../../../assets/images/people/profile.jpeg")} style={styles.icon} /> 
+            <Image source={require("../../../assets/images/upload_icon.png")} style={styles.icon} /> 
             <Text>Mengunggah</Text>
           </View>
         </View>
@@ -37,7 +37,7 @@ const Sewa: React.FC = () => {
         <Text style={styles.label}>Surat Perjanjian Sewa Lahan</Text>
         <View style={styles.uploadBox}>
           <View style={styles.uploadContent}>
-            <Image source={require("../../../assets/images/people/profile.jpeg")} style={styles.icon} />
+            <Image source={require("../../../assets/images/upload_icon.png")} style={styles.icon} />
             <Text>Mengunggah</Text>
           </View>
         </View>
@@ -47,19 +47,19 @@ const Sewa: React.FC = () => {
         <Text style={styles.label}>Surat Izin Usaha Perdagangan (SIUP)</Text>
         <View style={styles.uploadBox}>
           <View style={styles.uploadContent}>
-            <Image source={require("../../../assets/images/people/profile.jpeg")} style={styles.icon} />
+            <Image source={require("../../../assets/images/upload_icon.png")} style={styles.icon} />
             <Text>Mengunggah</Text>
           </View>
         </View>
       </View>
 
-      <TouchableOpacity style={styles.submitButton}>
+      <TouchableOpacity style={styles.submitButton} onPress={onUploadPress}>
         <Text style={styles.submitText}>KIRIM</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={onUploadPress}>
-        <Image source={require("../../../assets/images/people/profile.jpeg")} style={styles.floatingIcon} />
-      </TouchableOpacity>
+      {/* <TouchableOpacity onPress={onUploadPress}>
+        <Image source={require("../../../assets/images/upload_icon.png")} style={styles.floatingIcon} />
+      </TouchableOpacity> */}
     </ScrollView>
   );
 };

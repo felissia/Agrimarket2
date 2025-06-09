@@ -39,7 +39,9 @@ const Opsi = () => {
 
   return (
     <View style={styles.container}>
-      <BackButton />
+      <View style={styles.backWrapper}>
+        <BackButton />
+      </View>
 
       <View style={styles.content}>
         <Text style={styles.title}>Kepemilikan{'\n'}Lahan</Text>
@@ -63,6 +65,12 @@ const Opsi = () => {
 };
 
 const styles = StyleSheet.create({
+  backWrapper: {
+    position: 'static',
+    top:  0,
+    left: 0,
+    zIndex: 10,
+  }, 
   container: {
     flex: 1,
     backgroundColor: '#FFF',
