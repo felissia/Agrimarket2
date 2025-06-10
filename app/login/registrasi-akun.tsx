@@ -76,7 +76,8 @@ export default function LoginScreen() {
       <View style={styles.kirimKodeContainer}>
         <Text style={styles.kirimKodeLabel}>Kirim Kode</Text>
         <TouchableOpacity style={styles.codeButton}
-        onPress={() => router.push('/login/verif')}>
+        onPress={() => router.push('/login/verif')
+        /* sendVerification */}>
           <View style={styles.buttonContent}>
             <Image
               style={styles.icon}
@@ -86,7 +87,9 @@ export default function LoginScreen() {
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.codeButton}
-        onPress={() => router.push('/login/verif')}>
+        onPress={() => router.push('/login/verif')
+        /* sendVerification */
+        }>
           <View style={styles.buttonContent}>
             <Image
               style={styles.icon}

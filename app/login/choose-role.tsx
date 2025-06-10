@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function ChooseRolePage() {
   const router = useRouter();
@@ -9,26 +9,26 @@ export default function ChooseRolePage() {
       <Text style={styles.title}>Pilih Peran</Text>
 
       {/* Petani */}
-      <TouchableOpacity style={styles.card} onPress={() => router.push('../petani/kepemilikanLahan/opsi' as any)}>
-        {/* <Image source={require('../../../assets/image/farmer.png')} style={styles.image} /> */}
+      <TouchableOpacity style={styles.card} onPress={() => router.push('../petani/kepemilikanLahan/opsi')}>
+        <Image source={require('../../assets/images/Petani.png')} style={styles.image} />
         <Text style={styles.cardText}>Petani</Text>
       </TouchableOpacity>
 
       {/* Pengelolah */}
       <TouchableOpacity style={styles.card} onPress={() => router.push('/pengelolah/homePage' as any)}>
-        {/* <Image source={require('../../../assets/image/processor.png')} style={styles.image} /> */}
+        <Image source={require('../../assets/images/pengolah.png')} style={styles.image} />
         <Text style={styles.cardText}>Pengelolah</Text>
       </TouchableOpacity>
 
       {/* Distributor */}
       <TouchableOpacity style={styles.card} onPress={() => router.push('/distributor/homePage')}>
-        {/* <Image source={require('../../../assets/image/distributor.png')} style={styles.image} /> */}
+        <Image source={require('../../assets/images/Distributor.png')} style={styles.image} />
         <Text style={styles.cardText}>Distributor</Text>
       </TouchableOpacity>
 
       {/* Konsumen */}
       <TouchableOpacity style={styles.card} onPress={() => router.push('../konsumen/homePage')}>
-        {/* <Image source={require('../../../assets/image/consumer.png')} style={styles.image} /> */}
+        <Image source={require('../../assets/images/Konsumen.png')} style={styles.image} />
         <Text style={styles.cardText}>Konsumen</Text>
       </TouchableOpacity>
     </View>
