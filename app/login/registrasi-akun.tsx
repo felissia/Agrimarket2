@@ -50,6 +50,8 @@ export default function RegisterPage() {
         {/* <Image source={require('../../../assets/image/whatsapp.png')} style={styles.icon} /> */}
         <Text style={styles.buttonText}>Whatsapp</Text>
       </TouchableOpacity>
+     
+
 
       <TouchableOpacity style={styles.buttonSMS}>
         {/* <Image source={require('../../../assets/image/sms.png')} style={styles.icon} /> */}
