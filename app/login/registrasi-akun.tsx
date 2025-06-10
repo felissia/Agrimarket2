@@ -8,45 +8,59 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
-// import { FirebaseRecaptchaVerifierModal } from 'expo-firebase-recaptcha';
 // import { auth } from '../../firebase';
+import { getAuth, PhoneAuthProvider, signInWithCredential } from 'firebase/auth';
+// import { firebaseApp } from '../../firebase'; 
+import { FirebaseRecaptchaVerifierModal } from 'expo-firebase-recaptcha';
+import { Alert } from 'react-native';
+import { firebaseApp } from '../../lib/firebase';
+
+
+
 
 export default function LoginScreen() {
   const router = useRouter();
-  const recaptchaVerifier = useRef(null);
+  // const recaptchaVerifier = useRef(null);
+  const recaptchaVerifier = useRef<FirebaseRecaptchaVerifierModal>(null);
+  const auth = getAuth(firebaseApp);
 
   const [phoneNumber, setPhoneNumber] = useState('');
   const [code, setCode] = useState('');
   const [verificationId, setVerificationId] = useState<string | null>(null);
 
-//   const sendVerification = async () => {
-//     try {
-//       const phoneProvider = new PhoneAuthProvider(auth);
-//       const id = await phoneProvider.verifyPhoneNumber(
-//         '+62' + phoneNumber,
-//         recaptchaVerifier.current
-//       );
-//       setVerificationId(id);
-//       Alert.alert('Kode dikirim', 'Silakan periksa WhatsApp Anda');
-//     } catch (err) {
-//       if (err instanceof Error) {
-//         Alert.alert('Error', err.message);
-//       } else {
-//         Alert.alert('Error', 'Terjadi kesalahan');
-//       }
-//     }
-//   };
+  const sendVerification = async () => {
+    try {
+      const phoneProvider = new PhoneAuthProvider(auth);
+      const id = await phoneProvider.verifyPhoneNumber(
+        '+62' + phoneNumber,
+        recaptchaVerifier.current!
 
-//   const confirmCode = async () => {
-//     try {
-//       const credential = PhoneAuthProvider.credential(verificationId, code);
-//       await signInWithCredential(auth, credential);
-//       Alert.alert('Sukses', 'Verifikasi berhasil!');
-//       router.push('/login/registrasi-akun');
-//     } catch (err) {
-//       Alert.alert('Gagal', 'Kode salah atau kedaluwarsa');
-//     }
-//   };
+      );
+      setVerificationId(id);
+      Alert.alert('Kode dikirim', 'Silakan periksa WhatsApp Anda');
+    } catch (err) {
+      if (err instanceof Error) {
+        Alert.alert('Error', err.message);
+      } else {
+        Alert.alert('Error', 'Terjadi kesalahan');
+      }
+    }
+  };
+
+  const confirmCode = async () => {
+      if (!verificationId) {
+    Alert.alert('Error', 'Verifikasi belum dimulai.');
+    return;
+  }
+    try {
+      const credential = PhoneAuthProvider.credential(verificationId, code);
+      await signInWithCredential(auth, credential);
+      Alert.alert('Sukses', 'Verifikasi berhasil!');
+      router.push('/login/registrasi-akun');
+    } catch (err) {
+      Alert.alert('Gagal', 'Kode salah atau kedaluwarsa');
+    }
+  };
 
   return (
     <View style={styles.login}>
@@ -54,6 +68,11 @@ export default function LoginScreen() {
         ref={recaptchaVerifier}
         firebaseConfig={auth.app.options}
       /> */}
+      <FirebaseRecaptchaVerifierModal
+  ref={recaptchaVerifier}
+  firebaseConfig={firebaseApp.options}
+/>
+
 
       <View style={styles.groupParent}>
         <Text style={styles.title}>Registrasi Akun</Text>

@@ -19,6 +19,7 @@ const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 
 // Ekspor Authentication
-export const auth = getAuth(app);
+const auth = getAuth(app);
 
+export { auth, app as firebaseApp };
 
