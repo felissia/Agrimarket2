@@ -1,12 +1,12 @@
 import { useRouter } from 'expo-router';
 import React, { useRef, useState } from 'react';
 import {
-    Image,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View
+  Image,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
 } from 'react-native';
 // import { FirebaseRecaptchaVerifierModal } from 'expo-firebase-recaptcha';
 // import { auth } from '../../firebase';
@@ -19,34 +19,7 @@ export default function LoginScreen() {
   const [code, setCode] = useState('');
   const [verificationId, setVerificationId] = useState<string | null>(null);
 
-//   const sendVerification = async () => {
-//     try {
-//       const phoneProvider = new PhoneAuthProvider(auth);
-//       const id = await phoneProvider.verifyPhoneNumber(
-//         '+62' + phoneNumber,
-//         recaptchaVerifier.current
-//       );
-//       setVerificationId(id);
-//       Alert.alert('Kode dikirim', 'Silakan periksa WhatsApp Anda');
-//     } catch (err) {
-//       if (err instanceof Error) {
-//         Alert.alert('Error', err.message);
-//       } else {
-//         Alert.alert('Error', 'Terjadi kesalahan');
-//       }
-//     }
-//   };
 
-//   const confirmCode = async () => {
-//     try {
-//       const credential = PhoneAuthProvider.credential(verificationId, code);
-//       await signInWithCredential(auth, credential);
-//       Alert.alert('Sukses', 'Verifikasi berhasil!');
-//       router.push('/login/registrasi-akun');
-//     } catch (err) {
-//       Alert.alert('Gagal', 'Kode salah atau kedaluwarsa');
-//     }
-//   };
 
   return (
     <View style={styles.login}>
