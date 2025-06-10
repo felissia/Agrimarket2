@@ -1,203 +1,203 @@
 import { useRouter } from 'expo-router';
-import { useState } from 'react';
-import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-// import { auth } from '/workspaces/Agrimarket2/lib/firebase';
-import auth from '@react-native-firebase/auth';
+import React, { useRef, useState } from 'react';
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
+} from 'react-native';
+// import { FirebaseRecaptchaVerifierModal } from 'expo-firebase-recaptcha';
+// import { auth } from '../../firebase';
 
-export default function RegisterPage() {
+export default function LoginScreen() {
   const router = useRouter();
-  const [phone, setPhone] = useState('');
+  const recaptchaVerifier = useRef(null);
 
-  // To confirm to the backend
-   const sendOTP = async () => {
-  try {
-    const confirmation = await auth().signInWithPhoneNumber(`+62${phone}`);
-    // Save confirmation for later verification
-    router.push({
-      pathname: '/login/verif',
-      params: { confirmationString: JSON.stringify(confirmation) }
-    });
-  } catch (error) {
-    console.log('Error sending OTP:', error);
-    Alert.alert('Error', 'Gagal mengirim kode OTP');
-  }
-};
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [code, setCode] = useState('');
+  const [verificationId, setVerificationId] = useState<string | null>(null);
+
+//   const sendVerification = async () => {
+//     try {
+//       const phoneProvider = new PhoneAuthProvider(auth);
+//       const id = await phoneProvider.verifyPhoneNumber(
+//         '+62' + phoneNumber,
+//         recaptchaVerifier.current
+//       );
+//       setVerificationId(id);
+//       Alert.alert('Kode dikirim', 'Silakan periksa WhatsApp Anda');
+//     } catch (err) {
+//       if (err instanceof Error) {
+//         Alert.alert('Error', err.message);
+//       } else {
+//         Alert.alert('Error', 'Terjadi kesalahan');
+//       }
+//     }
+//   };
+
+//   const confirmCode = async () => {
+//     try {
+//       const credential = PhoneAuthProvider.credential(verificationId, code);
+//       await signInWithCredential(auth, credential);
+//       Alert.alert('Sukses', 'Verifikasi berhasil!');
+//       router.push('/login/registrasi-akun');
+//     } catch (err) {
+//       Alert.alert('Gagal', 'Kode salah atau kedaluwarsa');
+//     }
+//   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Registrasi Akun</Text>
-      <Text style={styles.subtitle}>Nomor Telepon</Text>
+    <View style={styles.login}>
+      {/* <FirebaseRecaptchaVerifierModal
+        ref={recaptchaVerifier}
+        firebaseConfig={auth.app.options}
+      /> */}
 
-      
-            <View style={styles.phoneInputRow}>
+      <View style={styles.groupParent}>
+        <Text style={styles.title}>Registrasi Akun</Text>
+        <Text style={styles.subtitle}>Nomor Telepon</Text>
+      </View>
+
+      <View style={styles.inputGroup}>
         <View style={styles.prefixBox}>
-            <Text style={styles.prefixText}>+62</Text>
+          <Text style={styles.prefixText}>+62</Text>
         </View>
         <TextInput
-            style={styles.inputBox}
-            keyboardType="number-pad"
-            placeholder="8xxxxxxxxxx"
-            value={phone}
-            onChangeText={setPhone}
+          style={styles.phoneInput}
+          placeholder="81234567890"
+          keyboardType="phone-pad"
+          value={phoneNumber}
+          onChangeText={setPhoneNumber}
         />
-     </View>
+      </View>
 
+      <View style={styles.kirimKodeContainer}>
+        <Text style={styles.kirimKodeLabel}>Kirim Kode</Text>
+        <TouchableOpacity style={styles.codeButton}
+        onPress={() => router.push('/login/verif')}>
+          <View style={styles.buttonContent}>
+            <Image
+              style={styles.icon}
+            />
+            <Text style={styles.buttonTextGreen}>Whatsapp</Text>
+          </View>
+        </TouchableOpacity>
 
-      <Text style={styles.sendCodeLabel}>Kirim Kode</Text>
-
-      <TouchableOpacity onPress={() => router.push('/login/verif')}
-      style={styles.buttonWhatsApp}>
-        {/* <Image source={require('../../../assets/image/whatsapp.png')} style={styles.icon} /> */}
-        <Text style={styles.buttonText}>Whatsapp</Text>
-      </TouchableOpacity>
-     
-
-
-      <TouchableOpacity style={styles.buttonSMS}>
-        {/* <Image source={require('../../../assets/image/sms.png')} style={styles.icon} /> */}
-        <Text style={styles.buttonText}>SMS</Text>
-      </TouchableOpacity>
-
-
-         <View style={styles.bottomTextContainer}>
-        <Text style={styles.bottomText}>Sudah punya akun?</Text>
-        <TouchableOpacity onPress={() => router.push('/login/index' as any)}>
-            <Text style={[styles.loginLink, { textDecorationLine: 'underline' }]}>Masuk ke akun anda</Text>
+        <TouchableOpacity style={styles.codeButton}
+        onPress={() => router.push('/login/verif')}>
+          <View style={styles.buttonContent}>
+            <Image
+              style={styles.icon}
+              source={require('../../assets/images/messages 1.png')}
+            />
+            <Text style={styles.buttonTextBlue}>SMS</Text>
+          </View>
         </TouchableOpacity>
       </View>
 
+      <View style={styles.footer}>
+        <Text style={styles.footerText}>Belum punya akun?</Text>
+        <TouchableOpacity onPress={() => router.push('/login/registrasi-akun')}>
+          <Text style={styles.link}>Buat akun sekarang</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-    phoneInputRow: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        gap: 12, // Space between +62 box and input
-        marginBottom: 24,
-      },
-      
-      prefixBox: {
-        paddingHorizontal: 16,
-        paddingVertical: 12,
-        borderWidth: 1,
-        borderColor: '#84b067',
-        borderRadius: 8,
-      },
-      
-      prefixText: {
-        fontSize: 16,
-        color: '#333',
-      },
-      
-      inputBox: {
-        flex: 1,
-        borderWidth: 1,
-        borderColor: '#84b067',
-        borderRadius: 8,
-        paddingVertical: 12,
-        paddingHorizontal: 16,
-        fontSize: 16,
-        color: '#333',
-      },
-      
-  container: {
+  login: {
     flex: 1,
-    padding: 24,
     backgroundColor: '#fff',
-    paddingTop: 60,
+    padding: 24,
+  },
+  groupParent: {
+    marginTop: 80,
+    marginBottom: 20,
   },
   title: {
-    fontSize: 28,
-    fontWeight: 'bold',
+    fontSize: 40,
     color: '#84b067',
+    fontWeight: 'bold',
   },
   subtitle: {
-    fontSize: 14,
-    color: '#888',
-    marginTop: 8,
-    marginBottom: 12,
+    color: 'rgba(0, 0, 0, 0.5)',
+    marginTop: 4,
   },
-  phoneInputContainer: {
+  inputGroup: {
     flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  prefixBox: {
+    width: 70,
+    height: 60,
+    borderColor: '#91c077',
     borderWidth: 1,
-    borderColor: '#84b067',
-    borderRadius: 8,
-    overflow: 'hidden',
-    marginBottom: 24,
-  }, 
-  input: {
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 8,
+  },
+  prefixText: {
+    fontSize: 20,
+  },
+  phoneInput: {
     flex: 1,
-    paddingHorizontal: 12,
-    fontSize: 16,
-    color: '#333',
+    height: 60,
+    borderColor: '#91c077',
+    borderWidth: 1,
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    fontSize: 18,
   },
-  sendCodeLabel: {
-    fontSize: 16,
-    marginBottom: 12,
-    color: '#333',
+  kirimKodeContainer: {
+    marginTop: 30,
   },
-  buttonWhatsApp: {
+  kirimKodeLabel: {
+    fontSize: 20,
+    marginBottom: 10,
+  },
+  codeButton: {
+    borderColor: '#84b067',
+    borderWidth: 1,
+    borderRadius: 20,
+    height: 60,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 44,
+    marginBottom: 10,
+  },
+  buttonContent: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderWidth: 1,
-    borderColor: '#84b067',
-    borderRadius: 12,
-    paddingVertical: 12,
-    paddingHorizontal: 20,
-    marginBottom: 12,
-  },
-  buttonSMS: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: '#84b067',
-    borderRadius: 12,
-    paddingVertical: 12,
-    paddingHorizontal: 20,
   },
   icon: {
     width: 24,
     height: 24,
-    resizeMode: 'contain',
-    marginRight: 12,
+    marginRight: 10,
   },
-  buttonText: {
+  buttonTextGreen: {
+    color: '#84b067',
     fontSize: 16,
-    color: '#000',
+  },
+  buttonTextBlue: {
+    color: '#007aff',
+    fontSize: 16,
   },
   footer: {
-    flexDirection: 'row',
     marginTop: 40,
-    justifyContent: 'center',
+    alignItems: 'center',
   },
   footerText: {
-    fontSize: 14,
-    color: '#000',
-    fontWeight: 'bold',
+    fontWeight: '600',
   },
-  footerLink: {
-    fontSize: 14,
-    color: '#000000',
-    fontWeight: '500',
+  link: {
+    fontSize: 15,
+    textDecorationLine: 'underline',
+    marginTop: 5,
   },
-  bottomTextContainer: {
-    position: 'absolute',
-    bottom: 32,
-    left: 20,
-  },
-  
-  bottomText: {
-    fontWeight: 'bold',
-    fontSize: 14,
-    color: '#000',
-  },
-  
-  loginLink: {
-    fontSize: 14,
-    color: '#000000',
-    marginTop: 4,
-  },
-  
 });
