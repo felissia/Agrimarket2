@@ -40,7 +40,7 @@ export default function BottomNavigation({ activeTab }: BottomNavigationProps) {
         handleBerandaPress()
         break
       case "toko":
-        console.log("Toko navigation - route not implemented yet")
+        console.log("/petani/Toko/market_product")
         break
       case "percakapan":
         router.push("/petani/chat")

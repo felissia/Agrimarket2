@@ -134,7 +134,7 @@ export default function PetaniHomepage() {
             />
             <View style={styles.orderContent}>
               <Text style={styles.orderTitle}>1 Order baru saja di pesan oleh</Text>
-              <Text style={styles.orderSubtitle}>Cathlyn Shanice, silahkan klik untuk</Text>
+              <Text style={styles.orderSubtitle}>Bambang Supardi, silahkan klik untuk</Text>
               <Text style={styles.orderSubtitle}>lihat detail.</Text>
             </View>
           </TouchableOpacity>

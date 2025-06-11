@@ -8,11 +8,12 @@ export default function ChooseRolePage() {
     <View style={styles.container}>
       <Text style={styles.title}>Pilih Peran</Text>
 
-      {/* Petani */}
-      <TouchableOpacity style={styles.card} onPress={() => router.push('../petani/kepemilikanLahan/opsi')}>
+      Petani
+      <TouchableOpacity style={styles.card} onPress={() => router.push('../petani/homePage' as any)}>
         <Image source={require('../../assets/images/Petani.png')} style={styles.image} />
         <Text style={styles.cardText}>Petani</Text>
       </TouchableOpacity>
+
 
       {/* Pengelolah */}
       <TouchableOpacity style={styles.card} onPress={() => router.push('/pengelolah/homePage' as any)}>
