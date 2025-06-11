@@ -12,8 +12,9 @@ import {
 import { getAuth, PhoneAuthProvider, signInWithCredential } from 'firebase/auth';
 // import { firebaseApp } from '../../firebase'; 
 import { FirebaseRecaptchaVerifierModal } from 'expo-firebase-recaptcha';
+import { doc, setDoc } from 'firebase/firestore';
 import { Alert } from 'react-native';
-import { firebaseApp } from '../../lib/firebase';
+import { db, firebaseApp } from '../../lib/firebase';
 
 
 
@@ -49,14 +50,32 @@ export default function LoginScreen() {
 
   const confirmCode = async () => {
       if (!verificationId) {
+
     Alert.alert('Error', 'Verifikasi belum dimulai.');
     return;
   }
     try {
+
       const credential = PhoneAuthProvider.credential(verificationId, code);
       await signInWithCredential(auth, credential);
+      const user = auth.currentUser;
+
+       if (user) {
+      await setDoc(doc(db, 'users', user.uid), {
+        phone: user.phoneNumber,
+        role: 'petani', // ganti sesuai pilihan user
+        createdAt: new Date(),
+      });
+    }
+
+
+
       Alert.alert('Sukses', 'Verifikasi berhasil!');
       router.push('/login/registrasi-akun');
+
+
+
+
     } catch (err) {
       Alert.alert('Gagal', 'Kode salah atau kedaluwarsa');
     }
